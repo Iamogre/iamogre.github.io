@@ -1,6 +1,59 @@
+
 <html>
 	<head></head>
 	<body>
 		<h1>Hello World!</h1>
+		
+		<script>
+		
+		function startLogin(){
+				window.location.href = "https://launchpad.37signals.com/authorization/new?type=web_server&client_id=cad3b9d0069c8558ae6d5cc764fbb4449ff2a7e2&redirect_uri=https://iamogre.github.io/bc3rollup/index.html";
+		}
+		
+		
+		function getData(){
+			$.ajax({
+			  method: "GET",
+			  url: "https://3.basecampapi.com/3317886/projects/projects.json",
+			  dataType: "jsonp"
+			});
+			
+			alert("Done");
+		
+		}
+		
+		
+		
+			/*var basecampUser = "3317886";
+			basecampID = "https://3.basecampapi.com/3317886/people/1/assigned_todos.json"
+
+			function basecampGet() {
+				$.getJSON('https://3.basecampapi.com/people/1/assigned_todos.json', function (data) {
+					alert(data);
+
+					// var items = data.items.map(function (item) {
+					// 	return item.key + ': ' + item.value;
+					// });
+
+					// showData.empty();
+
+					// if (items.length) {
+					// 	var content = '<li>' + items.join('</li><li>') + '</li>';
+					// 	var list = $('<ul />').html(content);
+					// 	showData.append(list);
+					// }
+				});
+			};*/
+		</script>
+				
+		<button onclick="startLogin()">Base Camp log In</button>
+		
+		<button onclick="getData()">Base Camp log In</button>
+		
+		
+		
 	</body>
 </html>
+
+
+
