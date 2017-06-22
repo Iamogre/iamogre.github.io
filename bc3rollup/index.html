@@ -1,15 +1,23 @@
 
 <html>
-	<head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	</head>
+	<head></head>
 	<body>
 		<h1>Hello World!</h1>
 		
 		<script>
 		
 		function startLogin(){
+							
 				window.location.href = "https://launchpad.37signals.com/authorization/new?type=web_server&client_id=cad3b9d0069c8558ae6d5cc764fbb4449ff2a7e2&redirect_uri=https://iamogre.github.io/bc3rollup/index.html";
+		}
+		
+		function afterRedirectLogin(){
+			
+				var codeString = window.location.href.indexOf("code=");	
+
+				var codeStringPath = window.location.href.substring(codeString);
+		
+				window.location.href = "https://launchpad.37signals.com/authorization/token?type=web_server&client_id=cad3b9d0069c8558ae6d5cc764fbb4449ff2a7e2&redirect_uri=https://iamogre.github.io/bc3rollup/index.html&client_secret=your-client-secret&code=" + codeStringPath;
 		}
 		
 		
@@ -50,9 +58,9 @@
 				
 		<button onclick="startLogin()">Base Camp log In</button>
 		
-		<button onclick="getData()">Base Camp log In</button>
+		<button onclick="getData()">Base Camp log In Data Get</button>
 		
-		
+		<button onclick="afterRedirectLogin()">Base Camp After Redirect</button>
 		
 	</body>
 </html>
