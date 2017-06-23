@@ -31,17 +31,36 @@
 				
 				//https://launchpad.37signals.com/authorization/token?type=web_server&client_id=your-client-id&redirect_uri=your-redirect-uri&client_secret=your-client-secret&code=verification-code
 				
-			$.ajax({
+			/*$.ajax({
               url: "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath,
 			  type: "POST",
-               success: function (response) {
+               , success: function (response) {
                 if (response) {
                   alert(response);
                 } else {
                   alert("Failed...");
                 }
               }
-            });	
+            });*/
+
+
+			$.ajax({
+				url: "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath,
+				type: "POST",
+				crossDomain: true,
+				data: JSON.stringify(somejson),
+				dataType: "json",
+				success: function (response) {
+					var resp = JSON.parse(response)
+					alert(resp.status);
+				},
+				error: function (xhr, status) {
+					alert("error");
+				}
+			});
+
+
+			
 				
 		}
 		
