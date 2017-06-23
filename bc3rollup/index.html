@@ -34,7 +34,7 @@
 			$.ajax({
               url: "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath,
 			  type: "POST",
-               , success: function (response) {
+               success: function (response) {
                 if (response) {
                   alert(response);
                 } else {
