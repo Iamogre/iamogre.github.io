@@ -1,0 +1,106 @@
+<html>
+	
+	<head>
+	
+	<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script> 
+		
+	</head>
+	<body>
+		<h1>Hello World!</h1>
+		
+		<script>
+		
+		var client_ID = "cad3b9d0069c8558ae6d5cc764fbb4449ff2a7e2";
+		var client_sceret = "ba809f8138b6b5cadc6e26c03e20d8b605e74bcb";
+		var redirect_uri_link = "https://iamogre.github.io/bc3rollup/index.html";
+		
+		
+		function startLogin(){
+							
+				window.location.href = "https://launchpad.37signals.com/authorization/new?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link;
+		}
+		
+		function afterRedirectLogin(){
+			
+				var codeString = window.location.href.indexOf("code=");	
+				var codeStringPath = window.location.href.substring(codeString+5);
+				
+				
+					
+				//window.location.href = "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath;
+				
+				//https://launchpad.37signals.com/authorization/token?type=web_server&client_id=your-client-id&redirect_uri=your-redirect-uri&client_secret=your-client-secret&code=verification-code
+				
+			/*$.ajax({
+              url: "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath,
+			  type: "POST",
+               , success: function (response) {
+                if (response) {
+                  alert(response);
+                } else {
+                  alert("Failed...");
+                }
+              }
+            });*/
+
+
+			$.ajax({
+				url: "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath,
+				type: "POST",
+				crossDomain: true,
+				data: JSON.stringify(somejson),
+				dataType: "json",
+				success: function (response) {
+					var resp = JSON.parse(response)
+					alert(resp.status);
+				},
+				error: function (xhr, status) {
+					alert("error");
+				}
+			});
+
+
+			
+				
+		}
+		
+		
+		function getData(){
+			$.ajax({
+			  method: "GET",
+			  url: "https://3.basecampapi.com/3317886/projects/projects.json",
+			  dataType: "jsonp"
+			});
+			
+			alert("Done");
+		
+		}
+		
+		
+		
+			/*var basecampUser = "3317886";
+			basecampID = "https://3.basecampapi.com/3317886/people/1/assigned_todos.json"
+			function basecampGet() {
+				$.getJSON('https://3.basecampapi.com/people/1/assigned_todos.json', function (data) {
+					alert(data);
+					// var items = data.items.map(function (item) {
+					// 	return item.key + ': ' + item.value;
+					// });
+					// showData.empty();
+					// if (items.length) {
+					// 	var content = '<li>' + items.join('</li><li>') + '</li>';
+					// 	var list = $('<ul />').html(content);
+					// 	showData.append(list);
+					// }
+				});
+			};*/
+		</script>
+				
+		<button onclick="startLogin()">Base Camp log In</button>
+		
+		<button onclick="getData()">Base Camp log In Data Get</button>
+		
+		<button onclick="afterRedirectLogin()">Base Camp After Redirect</button>
+		
+	</body>
+</html>
