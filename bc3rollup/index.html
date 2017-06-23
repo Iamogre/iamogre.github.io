@@ -31,7 +31,7 @@
 				
 				//https://launchpad.37signals.com/authorization/token?type=web_server&client_id=your-client-id&redirect_uri=your-redirect-uri&client_secret=your-client-secret&code=verification-code
 				
-			/*$.ajax({
+			$.ajax({
               url: "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath,
 			  type: "POST",
                , success: function (response) {
@@ -41,10 +41,11 @@
                   alert("Failed...");
                 }
               }
-            });*/
+            });
 
-
-			$.ajax({
+			/*  No 'Access-Control-Allow-Origin' header is present on the requested resource*/
+			
+		/*	$.ajax({
 				beforeSend: function (xhr) {
 					xhr.setRequestHeader('HEADER', 'Access-Control-Allow-Origin:https://iamogre.github.io/bc3rollup/index.html');
 				},				
@@ -63,7 +64,7 @@
 					alert("error");
 				}
 			});
-
+*/
 
 			
 				
