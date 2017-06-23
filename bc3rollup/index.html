@@ -45,6 +45,9 @@
 
 
 			$.ajax({
+				beforeSend: function (xhr) {
+					xhr.setRequestHeader('HEADER', 'Access-Control-Allow-Origin:https://iamogre.github.io/bc3rollup/index.html');
+				},				
 				xhrFields: {
 					withCredentials: true
 				},				
