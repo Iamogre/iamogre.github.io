@@ -48,7 +48,6 @@
 				url: "https://launchpad.37signals.com/authorization/token?type=web_server&client_id="+client_ID+"&redirect_uri="+ redirect_uri_link+"&client_secret="+client_sceret+"&code=" + codeStringPath,
 				type: "POST",
 				crossDomain: true,
-				data: JSON.stringify(somejson),
 				dataType: "json",
 				success: function (response) {
 					var resp = JSON.parse(response)
