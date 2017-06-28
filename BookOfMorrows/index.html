@@ -178,13 +178,13 @@
 		var apiKey = "30d297351bb543a0a8cf1a2d80addb10";
 
 		$.ajax({
-			url: "https://www.bungie.net/Platform/Destiny/Manifest/InventoryItem/1274330687/",
+			url: "https://www.bungie.net/platform/destiny/vanguard/grimoire/2/4611686018437163478/",
 			headers: {
 				"X-API-Key": apiKey
 			}
 		}).done(function(json){
 				//console.log(json.Response.data.inventoryItem.itemName); //Gjallarhorn
-				console.log(json.Response.MessageData.inventoryItem.itemName); //Gjallarhorn
+				console.log(json.Response.data.inventoryItem.itemName); //Gjallarhorn
 
 				//console.log(json.Response.MessageData); //Gjallarhorn
 		});
